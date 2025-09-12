@@ -1,0 +1,23 @@
+names:
+- bench
+- bicycle
+- bus
+- car
+- cone
+- fire-hydrant
+- motorcycle
+- pothole
+- powerbox
+- puddle
+- stop-sign
+- truck
+nc: 12
+roboflow:
+  license: CC BY 4.0
+  project: obstacles-yywad
+  url: https://universe.roboflow.com/competition-o98lu/obstacles-yywad/dataset/5
+  version: 5
+  workspace: competition-o98lu
+test: ../test/images
+train: obstacles-5/train/images
+val: obstacles-5/valid/images

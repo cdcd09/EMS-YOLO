@@ -1,0 +1,37 @@
+{
+    "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2025-09-12T09:58:51.035286",
+    "startedAt": "2025-09-12T09:58:49.744248",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1080 Ti",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--batch",
+        "8",
+        "--data",
+        "obstacles-5/data.yaml",
+        "--img",
+        "640",
+        "--epochs",
+        "100",
+        "--device",
+        "0",
+        "--weights",
+        ""
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/cdcd09/EMS-YOLO.git",
+        "commit": "8717618fdd03a395d4b47edd72c3318e9860c71c"
+    },
+    "email": "cdcd1115@gmail.com",
+    "root": "/home/jh/workspace/EMS-YOLO",
+    "host": "DESKTOP-N9OTVKR",
+    "username": "jh",
+    "executable": "/home/jh/miniconda3/envs/coco/bin/python"
+}

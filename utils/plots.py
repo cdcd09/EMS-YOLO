@@ -69,7 +69,7 @@ class Annotator:
     if RANK in (-1, 0):
         check_font()  # download TTF if necessary
 
-    #  Annotator for train/val mosaics and jpgs and detect/hub inference annotations
+    #  Annotator for train/val mosaics and jpgs and detect/hub inference annotations
     def __init__(self, im, line_width=None, font_size=None, font='Arial.ttf', pil=False, example='abc'):
         assert im.data.contiguous, 'Image not contiguous. Apply np.ascontiguousarray(im) to Annotator() input images.'
         self.pil = pil or not is_ascii(example) or is_chinese(example)
@@ -87,7 +87,9 @@ class Annotator:
         if self.pil or not is_ascii(label):
             self.draw.rectangle(box, width=self.lw, outline=color)  # box
             if label:
-                w, h = self.font.getsize(label)  # text width, height
+                # [FIX] Pillow 10.0.0 compatibility for getting text size
+                bbox = self.font.getbbox(label)
+                w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
                 outside = box[1] - h >= 0  # label fits outside box
                 self.draw.rectangle([box[0],
                                      box[1] - h if outside else box[1],
@@ -109,11 +111,13 @@ class Annotator:
 
     def rectangle(self, xy, fill=None, outline=None, width=1):
         # Add rectangle to image (PIL-only)
-        self.draw.rectangle(xy, fill, outline, width)#width=2
+        self.draw.rectangle(xy, fill, outline, width)
 
     def text(self, xy, text, txt_color=(255, 255, 255)):
         # Add text to image (PIL-only)
-        w, h = self.font.getsize(text)  # text width, height
+        # [FIX] Correct indentation and Pillow 10.0.0 compatibility
+        bbox = self.font.getbbox(text)
+        w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
         self.draw.text((xy[0], xy[1] - h + 1), text, fill=txt_color, font=self.font)
 
     def result(self):
@@ -143,7 +147,7 @@ def feature_visualization(x, module_type, stage, n=32, save_dir=Path('runs/detec
                 ax[i].imshow(blocks[i].squeeze())  # cmap='gray'
                 ax[i].axis('off')
 
-            print(f'Saving {save_dir / f}... ({n}/{channels})')
+            LOGGER.info(f'Saving {save_dir / f}... ({n}/{channels})')
             plt.savefig(save_dir / f, dpi=300, bbox_inches='tight')
             plt.close()
 
@@ -228,15 +232,15 @@ def plot_images(images, targets, paths=None, fname='images.jpg', names=None, max
                     boxes[[1, 3]] *= h
                 elif scale < 1:  # absolute coords need scale if image scales
                     boxes *= scale
-            boxes[[0, 2]] += x
-            boxes[[1, 3]] += y
-            for j, box in enumerate(boxes.T.tolist()):
-                cls = classes[j]
-                color = colors(cls)
-                cls = names[cls] if names else cls
-                if labels or conf[j] > 0.25:  # 0.25 conf thresh
-                    label = f'{cls}' if labels else f'{cls} {conf[j]:.1f}'
-                    annotator.box_label(box, label, color=color)
+                boxes[[0, 2]] += x
+                boxes[[1, 3]] += y
+                for j, box in enumerate(boxes.T.tolist()):
+                    cls = classes[j]
+                    color = colors(cls)
+                    cls = names[cls] if names else cls
+                    if labels or conf[j] > 0.25:  # 0.25 conf thresh
+                        label = f'{cls}' if labels else f'{cls} {conf[j]:.1f}'
+                        annotator.box_label(box, label, color=color)
     annotator.im.save(fname)  # save
 
 
@@ -320,7 +324,7 @@ def plot_val_study(file='', dir='', x=None):  # from utils.plots import *; plot_
     ax2.set_ylabel('COCO AP val')
     ax2.legend(loc='lower right')
     f = save_dir / 'study.png'
-    print(f'Saving {f}...')
+    LOGGER.info(f'Saving {f}...')
     plt.savefig(f, dpi=300)
 
 
@@ -393,7 +397,7 @@ def plot_evolve(evolve_csv='path/to/evolve.csv'):  # from utils.plots import *; 
     f = evolve_csv.with_suffix('.png')  # filename
     plt.savefig(f, dpi=200)
     plt.close()
-    print(f'Saved {f}')
+    LOGGER.info(f'Saved {f}')
 
 
 def plot_results(file='path/to/results.csv', dir=''):
@@ -416,7 +420,7 @@ def plot_results(file='path/to/results.csv', dir=''):
                 # if j in [8, 9, 10]:  # share train and val loss y axes
                 #     ax[i].get_shared_y_axes().join(ax[i], ax[i - 5])
         except Exception as e:
-            print(f'Warning: Plotting error for {f}: {e}')
+            LOGGER.warning(f'WARNING: Plotting error for {f}: {e}')
     ax[1].legend()
     fig.savefig(save_dir / 'results.png', dpi=200)
     plt.close()
@@ -448,7 +452,7 @@ def profile_idetection(start=0, stop=0, labels=(), save_dir=''):
                 else:
                     a.remove()
         except Exception as e:
-            print(f'Warning: Plotting error for {f}; {e}')
+            LOGGER.warning(f'WARNING: Plotting error for {f}; {e}')
     ax[1].legend()
     plt.savefig(Path(save_dir) / 'idetection_profile.png', dpi=200)
 

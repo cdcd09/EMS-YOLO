@@ -1,0 +1,56 @@
+{
+  "os": "Linux-6.1.123+-x86_64-with-glibc2.35",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-09-18T06:16:37.316481Z",
+  "args": [
+    "--data",
+    "data.yaml",
+    "--cfg",
+    "models/resnet18.yaml",
+    "--weights",
+    "",
+    "--epochs",
+    "200",
+    "--batch-size",
+    "16",
+    "--imgsz",
+    "640",
+    "--device",
+    "0"
+  ],
+  "program": "/content/EMS-YOLO/train.py",
+  "codePath": "train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "https://github.com/cdcd09/EMS-YOLO.git",
+    "commit": "19356a6926c28c26ffd7449025f71192ac5a5691"
+  },
+  "email": "cdcd1115@gmail.com",
+  "root": "/content/EMS-YOLO",
+  "host": "3950fdbbea10",
+  "executable": "/usr/bin/python3",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "120942624768",
+      "used": "42621542400"
+    }
+  },
+  "memory": {
+    "total": "89631739904"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A100-SXM4-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere",
+      "uuid": "GPU-cc79576c-d5a2-9e3f-f737-426ac7b5614b"
+    }
+  ],
+  "cudaVersion": "12.4",
+  "writerId": "kugha4jz90tcfx26brm2tqo45u5vip6d"
+}

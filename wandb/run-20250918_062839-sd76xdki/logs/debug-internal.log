@@ -1,0 +1,11 @@
+{"time":"2025-09-18T06:28:39.465621916Z","level":"INFO","msg":"stream: starting","core version":"0.21.3"}
+{"time":"2025-09-18T06:28:39.602468698Z","level":"INFO","msg":"stream: created new stream","id":"sd76xdki"}
+{"time":"2025-09-18T06:28:39.602502723Z","level":"INFO","msg":"stream: started","id":"sd76xdki"}
+{"time":"2025-09-18T06:28:39.602521085Z","level":"INFO","msg":"writer: started","stream_id":"sd76xdki"}
+{"time":"2025-09-18T06:28:39.60253649Z","level":"INFO","msg":"sender: started","stream_id":"sd76xdki"}
+{"time":"2025-09-18T06:28:39.602553203Z","level":"INFO","msg":"handler: started","stream_id":"sd76xdki"}
+{"time":"2025-09-18T06:31:04.937667022Z","level":"INFO","msg":"stream: closing","id":"sd76xdki"}
+{"time":"2025-09-18T06:31:05.151749838Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T06:31:05.251462078Z","level":"INFO","msg":"handler: closed","stream_id":"sd76xdki"}
+{"time":"2025-09-18T06:31:05.251563998Z","level":"INFO","msg":"sender: closed","stream_id":"sd76xdki"}
+{"time":"2025-09-18T06:31:05.251572988Z","level":"INFO","msg":"stream: closed","id":"sd76xdki"}

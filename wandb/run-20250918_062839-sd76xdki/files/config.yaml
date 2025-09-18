@@ -1,0 +1,208 @@
+_wandb:
+    value:
+        cli_version: 0.21.3
+        e:
+            kspayyhmov3bt5m7epo3mom42d7g5tjr:
+                args:
+                    - --data
+                    - data.yaml
+                    - --cfg
+                    - models/resnet18.yaml
+                    - --weights
+                    - ""
+                    - --epochs
+                    - "50"
+                    - --batch-size
+                    - "16"
+                    - --imgsz
+                    - "640"
+                    - --device
+                    - "0"
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 6
+                cpu_count_logical: 12
+                cudaVersion: "12.4"
+                disk:
+                    /:
+                        total: "120942624768"
+                        used: "42625810432"
+                email: cdcd1115@gmail.com
+                executable: /usr/bin/python3
+                git:
+                    commit: 19356a6926c28c26ffd7449025f71192ac5a5691
+                    remote: https://github.com/cdcd09/EMS-YOLO.git
+                gpu: NVIDIA A100-SXM4-40GB
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-SXM4-40GB
+                      uuid: GPU-cc79576c-d5a2-9e3f-f737-426ac7b5614b
+                host: 3950fdbbea10
+                memory:
+                    total: "89631739904"
+                os: Linux-6.1.123+-x86_64-with-glibc2.35
+                program: /content/EMS-YOLO/train.py
+                python: CPython 3.12.11
+                root: /content/EMS-YOLO
+                startedAt: "2025-09-18T06:28:39.250352Z"
+                writerId: kspayyhmov3bt5m7epo3mom42d7g5tjr
+        m: []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 2
+                - 3
+                - 5
+                - 12
+                - 41
+                - 49
+                - 53
+                - 105
+            "2":
+                - 1
+                - 2
+                - 3
+                - 5
+                - 12
+                - 41
+                - 49
+                - 53
+                - 80
+                - 105
+            "3":
+                - 16
+            "4": 3.12.11
+            "5": 0.21.3
+            "12": 0.21.3
+            "13": linux-x86_64
+adam:
+    value: false
+artifact_alias:
+    value: latest
+batch_size:
+    value: 16
+bbox_interval:
+    value: -1
+bucket:
+    value: ""
+cache:
+    value: null
+cfg:
+    value: models/resnet18.yaml
+data:
+    value: data.yaml
+data_dict:
+    value:
+        names:
+            - bench
+            - bicycle
+            - bus
+            - car
+            - cone
+            - fire-hydrant
+            - motorcycle
+            - pothole
+            - powerbox
+            - puddle
+            - stop-sign
+            - truck
+        nc: 12
+        roboflow:
+            license: CC BY 4.0
+            project: obstacles-yywad
+            url: https://universe.roboflow.com/competition-o98lu/obstacles-yywad/dataset/5
+            version: 5
+            workspace: competition-o98lu
+        test: ../test/images
+        train: obstacles-5/train/images
+        val: obstacles-5/valid/images
+device:
+    value: "0"
+entity:
+    value: null
+epochs:
+    value: 50
+evolve:
+    value: null
+exist_ok:
+    value: false
+freeze:
+    value: 0
+hyp:
+    value:
+        anchor_t: 4
+        box: 0.05
+        cls: 0.5
+        cls_pw: 1
+        copy_paste: 0
+        degrees: 0
+        fl_gamma: 0
+        fliplr: 0.5
+        flipud: 0
+        hsv_h: 0.015
+        hsv_s: 0.7
+        hsv_v: 0.4
+        iou_t: 0.2
+        lr0: 0.01
+        lrf: 0.1
+        mixup: 0
+        momentum: 0.937
+        mosaic: 1
+        obj: 1
+        obj_pw: 1
+        perspective: 0
+        scale: 0.5
+        shear: 0
+        translate: 0.1
+        warmup_bias_lr: 0.1
+        warmup_epochs: 3
+        warmup_momentum: 0.8
+        weight_decay: 0.0005
+image_weights:
+    value: false
+imgsz:
+    value: 640
+label_smoothing:
+    value: 0
+linear_lr:
+    value: false
+local_rank:
+    value: -1
+multi_scale:
+    value: false
+name:
+    value: exp
+noautoanchor:
+    value: false
+nosave:
+    value: false
+noval:
+    value: false
+patience:
+    value: 100
+project:
+    value: runs/train
+quad:
+    value: false
+rect:
+    value: false
+resume:
+    value: false
+save_dir:
+    value: runs/train/exp19
+save_period:
+    value: -1
+single_cls:
+    value: false
+sync_bn:
+    value: false
+upload_dataset:
+    value: false
+weights:
+    value: ""
+workers:
+    value: 4
